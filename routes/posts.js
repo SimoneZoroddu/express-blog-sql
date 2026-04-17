@@ -6,4 +6,6 @@ router.get('/', postController.index )
 
 router.delete('/:id', postController.destroy )
 
+router.get('/:id', postController.show)
+
 module.exports = router

@@ -25,7 +25,18 @@ const destroy = (req,res) => {
 }
 
 
+const show = (req, res) => {
 
+    const {id} = req.params
+
+    const showSql = `SELECT * FROM posts WHERE id = ?`
+
+    connection.query(showSql, [id], (err, results) => {
+        if (err) return res.status(500).json({ error: 'Post non trovato'})
+        res.json(results[0])
+    })
+
+}
 
 
 
@@ -42,4 +53,5 @@ const destroy = (req,res) => {
 module.exports = {
     index,
     destroy,
+    show
 }
